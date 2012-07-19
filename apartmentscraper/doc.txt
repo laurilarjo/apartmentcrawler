@@ -2,3 +2,9 @@ robotteja varten sitemap:
 http://static.asunnot.oikotie.fi/sitemaps/index.xml
     sm_ad_1.xml on myytäviä asuntoja
     sm_building_1.xml on talojen esittelyjä
+
+
+linkki asuntoon
+/html/body[@id='default-search-index']/div[@id='outer-container']/div[@id='container']/div[@id='content']/div[@id='search']/div[@id='search-views']/div[@id='search-view-list']/div[@id='search-view-list-view']/ul[@class='cards']/li[@class='card'][1]/div[@class='card card-ad']/div[@class='background']/div[@class='content']/div[@class='image']/a/@href
+
+kaikki linkit: /html//div[@class='card card-ad']/div[@class='background']/div[@class='content']/div[@class='image']/a/@href
