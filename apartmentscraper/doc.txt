@@ -1,0 +1,4 @@
+robotteja varten sitemap:
+http://static.asunnot.oikotie.fi/sitemaps/index.xml
+    sm_ad_1.xml on myytäviä asuntoja
+    sm_building_1.xml on talojen esittelyjä
