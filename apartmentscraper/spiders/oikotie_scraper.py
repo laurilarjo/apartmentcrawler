@@ -19,9 +19,8 @@ class OikotieSpider(BaseSpider):
     #allowed_domains = ['mininova.org']
     #start_urls = ['http://www.mininova.org/today']
     # lahti, 48 items per page
-    start_urls = ["http://asunnot.oikotie.fi/myytavat-asunnot#view=list&module=apartment-sell&offset=0&limit=2&sortby=published%20desc&aslocation%5Blocationids%5D%5B%5D=192%7C6%7C60.982994%7C25.65739%7CLahti&asprice%5Bsuffix%5D=000&asprice%5Bmin%5D=&asprice%5Bmax%5D=&assize%5Bmin%5D=30&assize%5Bmax%5D=60&assettings%5Bchanged%5D=1&assettings%5Bcollapsed%5D=1&asbuildyear%5Bmin%5D=&asbuildyear%5Bmax%5D=&assizelot%5Bmin%5D=&assizelot%5Bmax%5D=&asnewdevelopment%5Bnew_development%5D=1&aspublished%5Bpublished%5D=1"]
-
-    #start_urls = ['http://asunnot.oikotie.fi/myytavat-asunnot']
+    #start_urls = ["http://asunnot.oikotie.fi/myytavat-asunnot#view=list&module=apartment-sell&offset=0&limit=2&sortby=published%20desc&aslocation%5Blocationids%5D%5B%5D=192%7C6%7C60.982994%7C25.65739%7CLahti&asprice%5Bsuffix%5D=000&asprice%5Bmin%5D=&asprice%5Bmax%5D=&assize%5Bmin%5D=30&assize%5Bmax%5D=60&assettings%5Bchanged%5D=1&assettings%5Bcollapsed%5D=1&asbuildyear%5Bmin%5D=&asbuildyear%5Bmax%5D=&assizelot%5Bmin%5D=&assizelot%5Bmax%5D=&asnewdevelopment%5Bnew_development%5D=1&aspublished%5Bpublished%5D=1"]
+    start_urls = ["http://asunnot.oikotie.fi/myytavat-asunnot"]
 
 
 
@@ -30,10 +29,20 @@ class OikotieSpider(BaseSpider):
 
         self.browser.get(response.url) # Load page
 
-        #Wait for javscript to load in Selenium
-        time.sleep(2.5)
+        time.sleep(2)
+        searchbox = self.browser.find_element_by_id("magicbox")
+        searchbox.send_keys("Lahti\r\n")
+        #searchbox.send_keys(Keys.ENTER)
+        time.sleep(5)
+        size_min = self.browser.find_element_by_id("assize-min")
+        size_min.send_keys("30")
+        size_max = self.browser.find_element_by_id("assize-max")
+        size_max.send_keys("60")
 
+        time.sleep(2)
         apartment_urls = self.browser.find_elements_by_xpath("/html//div[@class='card card-ad']/div[@class='background']/div[@class='content']/div[@class='image']/a")
+        for url in apartment_urls:
+            print url
 
         for url in apartment_urls:
             print(url)
