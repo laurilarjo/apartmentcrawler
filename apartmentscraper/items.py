@@ -9,11 +9,12 @@ class ApartmentscraperItem(Item):
     # define the fields for your item here like:
     url = Field()
     name = Field()
+    address = Field()
     location = Field()
     surface_area = Field()
     construction_year = Field()
     price = Field()
-    monthly_expenses = Field()
+    monthly_costs = Field()
 
 
     pass
