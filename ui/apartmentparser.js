@@ -20,6 +20,9 @@ $(document).ready(function() {
                 this.surface_area == undefined) {
                 return true;
             }
+            if (this.location == undefined) {
+                this.location = "Ei tiedossa";
+            }
 
             //prepare the data
             this.price = Larkki.convertToNumber(this.price);
@@ -49,7 +52,7 @@ $(document).ready(function() {
         jQuery.each(apartmentData, function() {
             var arr = [];
             arr.push(this.url);
-            //arr.push(this.address);
+            arr.push(this.address);
             arr.push(this.location);
             arr.push(this.construction_year);
             arr.push(this.surface_area);
@@ -73,7 +76,7 @@ $(document).ready(function() {
                     var sReturn = obj.aData[ obj.iDataColumn ];
                     return "<a href=" + sReturn + ">" + sReturn + "</a>";
                 }},
-                //{ "sTitle": "Address" },
+                { "sTitle": "Address" },
                 { "sTitle": "Location" },
                 { "sTitle": "Construction_year", "sClass": "center" },
                 { "sTitle": "Surface_area", "sClass": "center" },
